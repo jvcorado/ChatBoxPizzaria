@@ -55,10 +55,11 @@ function resetInput(){
 
 function devolveNome(){
     const entrada = document.createElement('p')
-    entrada.classList.add('espec')
     const res = document.createElement('p');
     nome = input.value;
+    entrada.classList.add('espec')
     entrada.append(nome)
+    res.classList.add('success')
     res.append(`Seja Bem Vindo ${nome} á JVPIZZAS`);
     chat.appendChild(entrada);
     chat.appendChild(res);
@@ -70,6 +71,7 @@ function listaCardapio(){
     chat.appendChild(titulo);  
     for (let i = 0; i < cardapio.length; i++){
         const res = document.createElement('p');
+        res.classList.add('primary')
         res.append(`ID: ${cardapio[i].id} Sabor: ${cardapio[i].sabor} Valor: ${cardapio[i].preco}`);
         chat.appendChild(res); 
         resetInput();
@@ -124,6 +126,7 @@ function listaPagamento(){
     chat.appendChild(h1);  
     for (let i = 0; i < pagamento.length; i++){
         const res = document.createElement('p');
+        res.classList.add('primary')
         res.append(`ID: ${pagamento[i].id} Forma: ${pagamento[i].forma}`);
         chat.appendChild(res); 
         resetInput();
@@ -170,6 +173,7 @@ function perguntaPagamento(){
                 }
                 else{
                     const res = document.createElement('p')
+                    res.classList.add('danger')
                     troco = 0;
                     valor = 0;
                     res.append('O motoboy levara a maquininha')
@@ -177,11 +181,8 @@ function perguntaPagamento(){
                     finalizaPedido()
                 }
             }
-            
-        }
-       
+        }  
     }
- 
 }
 
 function finalizaPedido(){
