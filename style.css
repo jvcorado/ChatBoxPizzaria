@@ -26,12 +26,10 @@ body{
     overflow-y: scroll;
 }
 .botoes{
- 
     display: flex;
     align-items: center;
     justify-content: center;
     width:100%;
-
 }
 input{
     width: 100%;
@@ -43,7 +41,6 @@ input{
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.26);
 }
 button{
-
     padding: 19px;
     background-color: green;
     border-radius: 0px 0px 20px 0px ;
@@ -58,4 +55,15 @@ p{
     font-weight: 700;
     font-size: 24px;
     margin: 10px 0 10px 0;
+}
+
+@media (max-width:500px) {
+    .container{
+        width: 100vw;
+    }
+    .chat{
+        margin: 10px;
+        width:100vw;
+        background-color: blue;
+    }
 }
