@@ -15,7 +15,7 @@
 }
 .chat{
     background-color: aquamarine;
-    width: 100%;
+    width: 100vw;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 900;

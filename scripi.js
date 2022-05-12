@@ -1,6 +1,6 @@
 const nome = document.querySelector('#name');
 const chat = document.querySelector('.chat');
-
+let pedido;
 
 const cardapio = [
     {
@@ -26,6 +26,21 @@ const cardapio = [
     },                                                           
 ]
 
+const pagamento = [
+    {
+        id: 1,
+        forma: 'Cartão crédito'
+    },
+    {
+        id: 2,
+        forma: 'Cartão Debito'
+    },
+    {
+        id: 3,
+        forma: 'Dinheiro'
+    }
+]
+
 function listaCardapio(){
     const h1 = document.createElement('h1')
     h1.append('CARDÁPIO');  
@@ -36,6 +51,17 @@ function listaCardapio(){
         chat.appendChild(res); 
     }
     perguntaPedido();
+}
+
+function listaPagamento(){
+    const h1 = document.createElement('h1')
+    h1.append('Forma de Pagamento');  
+    chat.appendChild(h1);  
+    for (let i = 0; i < pagamento.length; i++){
+        const res = document.createElement('p');
+        res.append(`ID: ${pagamento[i].id} Forma: ${pagamento[i].forma}`);
+        chat.appendChild(res); 
+    }
 }
 
 function devolveNome(){
@@ -49,7 +75,6 @@ function perguntaPedido(){
     const pergunta = document.createElement('p');
     const inputPedido = document.createElement('input');
     const btnPedido = document.createElement('button');
-    let pedido;
     pergunta.append(`Digite o id do pedido: ${nome.value}`);
     chat.appendChild(pergunta).value;
     chat.appendChild(inputPedido).value;
@@ -74,7 +99,7 @@ function perguntaEndereco(){
     const inputEndereço = document.createElement('input');
     const btnEndereço = document.createElement('button');
     let endereco;
-    pergunta.append(`Qual é o seu endereço: `);
+    pergunta.append(`Qual é o seu endereço:`);
     chat.appendChild(pergunta).value;
     chat.appendChild(inputEndereço).value;
     btnEndereço.textContent ='enivar';
@@ -83,8 +108,36 @@ function perguntaEndereco(){
         const resultado = document.createElement('p');
         resultado.append(`Seu endereço é: ${endereco}`);
         chat.appendChild(resultado);
+        perguntaPagamento();
     }
     chat.appendChild(btnEndereço);
+}
+function perguntaPagamento(){
+    const pergunta = document.createElement('p');
+    const inputPagamento = document.createElement('input');
+    const btnPagamento = document.createElement('button');
+    let pag;
+    const resultado = document.createElement('p');
+    resultado.append(`Valor total: ${cardapio[pedido - 1].preco}`)
+    chat.appendChild(resultado);
+    listaPagamento();
+    pergunta.append(`Qual é a forma de pagamento:`);
+    chat.appendChild(pergunta).value;
+    chat.appendChild(inputPagamento).value;
+    btnPagamento.textContent ='enivar';
+    
+    btnPagamento.onclick = function(){
+        pag = inputPagamento.value;
+        const resultado = document.createElement('p');
+        chat.appendChild(resultado);
+        for (let i = 0; i < pagamento.length; i++){
+            if(pag == pagamento[i].id){
+                resultado.append(`Forma de pagamento selecionado: ${pagamento[i].forma}`);
+
+            }
+        }
+    }
+    chat.appendChild(btnPagamento);
 }
 
 function finalizaPedido(){
