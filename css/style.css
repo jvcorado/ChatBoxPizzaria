@@ -49,18 +49,18 @@ h1{
 }
 
 p{
+
     background-color: rgb(255, 255, 255);
     border-radius: 20px 0px 0px 20px;
     padding: 10px;
     font-weight: 400;
     font-size: 20px;
-    margin: 10px 0 10px 0;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.26);
 }
 .espec{
-    margin-left: 185px;
+    margin-left: 100px;
     text-align: end;
-    width: 60%;
+    width: auto;
     background-color: rgb(250, 219, 215);
     border-radius: 10px;
     padding: 5px;
@@ -87,4 +87,5 @@ p{
     .espec{
         margin-left: 150px;
     }
+    
 }
