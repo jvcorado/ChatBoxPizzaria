@@ -133,7 +133,6 @@ function perguntaPagamento(){
         for (let i = 0; i < pagamento.length; i++){
             if(pag == pagamento[i].id){
                 resultado.append(`Forma de pagamento selecionado: ${pagamento[i].forma}`);
-
             }
         }
     }
