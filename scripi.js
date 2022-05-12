@@ -57,17 +57,16 @@ function perguntaPedido(){
     btnPedido.onclick = function(){
         pedido = inputPedido.value;
         const resultado = document.createElement('p');
-       
         chat.appendChild(resultado);
         for (let i = 0; i < cardapio.length; i++){
             if(pedido == cardapio[i].id){
                 resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`);
+                perguntaEndereco();
             }
         }
-        perguntaEndereco();
     }
     chat.appendChild(btnPedido);
-   
+    return pedido;
 }
 
 function perguntaEndereco(){
@@ -76,6 +75,24 @@ function perguntaEndereco(){
     const btnEndereço = document.createElement('button');
     let endereco;
     pergunta.append(`Qual é o seu endereço: `);
+    chat.appendChild(pergunta).value;
+    chat.appendChild(inputEndereço).value;
+    btnEndereço.textContent ='enivar';
+    btnEndereço.onclick = function(){
+        endereco = inputEndereço.value;
+        const resultado = document.createElement('p');
+        resultado.append(`Seu endereço é: ${endereco}`);
+        chat.appendChild(resultado);
+    }
+    chat.appendChild(btnEndereço);
+}
+
+function finalizaPedido(){
+    const pergunta = document.createElement('p');
+    const inputEndereço = document.createElement('input');
+    const btnFinalizar = document.createElement('button');
+    let finalizar;
+    pergunta.append(`Seu pedido: ${pedido}`);
     chat.appendChild(pergunta).value;
     chat.appendChild(inputEndereço).value;
     btnEndereço.textContent ='enivar';
