@@ -5,6 +5,10 @@ const titulo = document.createElement('h1')
 
 let pedido;
 let nome;
+let endereco;
+let pag;
+let troco;
+let valor;
 
 const cardapio = [
     {
@@ -100,7 +104,6 @@ function perguntaEndereco(){
     const pergunta = document.createElement('p');
     const res = document.createElement('p');
     const entrada = document.createElement('p')
-    let endereco;
     pergunta.append(`Qual é o seu endereço:`);
     chat.appendChild(pergunta).value;
     enviar.onclick = function(){
@@ -129,7 +132,7 @@ function listaPagamento(){
 
 function perguntaPagamento(){
     const pergunta = document.createElement('p');
-    let pag;
+    const entrada = document.createElement('p');
     const resultado = document.createElement('p');
     resultado.append(`Valor total: R$${cardapio[pedido - 1].preco}`)
     chat.appendChild(resultado);
@@ -139,32 +142,53 @@ function perguntaPagamento(){
     enviar.onclick = function(){
         pag = input.value;
         const resultado = document.createElement('p');
-        chat.appendChild(resultado);
         for (let i = 0; i < pagamento.length; i++){
             if(pag == pagamento[i].id){
+                entrada.classList.add("espec")
+                entrada.append(pag)
+                chat.appendChild(entrada);
                 resultado.append(`Forma de pagamento selecionado: ${pagamento[i].forma}`);
+                chat.appendChild(resultado);
                 resetInput();
+                if(pag == pagamento[2].id){
+                    const perg = document.createElement('p');
+                    perg.append('Digite o valor do troco:');
+                    chat.appendChild(perg);
+                    enviar.onclick= function(){
+                        const res = document.createElement('p');
+                        troco = input.value;
+                        const entrada = document.createElement('p');
+                        entrada.classList.add("espec")
+                        entrada.append(`R$${troco}`)
+                        chat.appendChild(entrada);
+                        valor = troco - cardapio[pedido - 1].preco
+                        res.append(`Valor do troco a devolver: R$${valor}`)
+                        chat.appendChild(res)
+                        resetInput()
+                        finalizaPedido()
+                    }
+                }
+                else{
+                    const res = document.createElement('p')
+                    troco = 0;
+                    valor = 0;
+                    res.append('O motoboy levara a maquininha')
+                    chat.appendChild(res)
+                    finalizaPedido()
+                }
             }
+            
         }
+       
     }
-    chat.appendChild(btnPagamento);
+ 
 }
 
 function finalizaPedido(){
-    const pergunta = document.createElement('p');
-    const inputEndereço = document.createElement('input');
-    const btnFinalizar = document.createElement('button');
-    let finalizar;
-    pergunta.append(`Seu pedido: ${pedido}`);
-    chat.appendChild(pergunta).value;
-    chat.appendChild(inputEndereço).value;
-    btnEndereço.textContent ='enivar';
-    btnEndereço.onclick = function(){
-        endereco = inputEndereço.value;
-        const resultado = document.createElement('p');
-        resultado.append(`Seu endereço é: ${endereco}`);
-        chat.appendChild(resultado);
-    }
-    chat.appendChild(btnEndereço);
+    const resultado = document.createElement('p');
+    resultado.append(`Pedido: ${cardapio[pedido-1].sabor}, Valor Total: ${cardapio[pedido - 1].preco}, endereco:${endereco}, Forma de Pagamento:${pagamento[pag-1].forma} Valor:R$${troco} Troco:R$${valor}`)
+    chat.appendChild(resultado);
+
+
 }
 
