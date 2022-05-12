@@ -14,24 +14,54 @@ const cardapio = [
     {
         id:1,
         sabor:'Calabresa',
-        preco:30.00
+        preco:29.90
     },
     {
         id:2,
         sabor:'Queijo',
-        preco:40.00
+        preco: 32.90
     },
     {
         id:3,
         sabor:'Portuguesa',
-        preco:50.50
+        preco:40.00
     
     },
     {
         id:4,
         sabor:'Frango',
-        preco:50.00
-    },                                                           
+        preco:35.00
+    },    
+    {
+        id:5,
+        sabor:'Canadense',
+        preco:47.70
+    },  
+    {
+        id:6,
+        sabor:'Cubana',
+        preco:35.00
+    },
+    {
+        id:7,
+        sabor:'Mussarela',
+        preco:35.00
+    },     
+    {
+        id:8,
+        sabor:'Atum',
+        preco:49.60
+    },     
+    {
+        id:9,
+        sabor:'Bacon',
+        preco:41.60
+    },  
+    {
+        id:10,
+        sabor:'Bauru',
+        preco:47.70
+    },                                                     
 ]
 
 const pagamento = [
