@@ -43,6 +43,9 @@ const pagamento = [
     }
 ]
 
+function resetInput(){
+    input.value = '';
+}
 
 function devolveNome(){
     const res = document.createElement('p');
@@ -50,6 +53,8 @@ function devolveNome(){
     res.append(`Seja Bem Vindo ${nome} á JVPIZZAS`);
     chat.appendChild(res);
     listaCardapio();
+     
+
 }
 
 function listaCardapio(){
@@ -60,13 +65,15 @@ function listaCardapio(){
         const res = document.createElement('p');
         res.append(`ID: ${cardapio[i].id} Sabor: ${cardapio[i].sabor} Valor: ${cardapio[i].preco}`);
         chat.appendChild(res); 
+        resetInput();
     }
     perguntaPedido();
+
 }
 
 function perguntaPedido(){
     const pergunta = document.createElement('p');
-    pergunta.append(`Digite o id do pedido: ${nome}`);
+    pergunta.append(`${nome} Digite o id do pedido: `);
     chat.appendChild(pergunta).value;
     enviar.onclick = function(){
         pedido = input.value;
@@ -76,6 +83,7 @@ function perguntaPedido(){
             if(pedido == cardapio[i].id){
                 resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`);
                 perguntaEndereco();
+                resetInput();
             }
         }
     }
@@ -94,6 +102,7 @@ function perguntaEndereco(){
         resultado.append(`Seu endereço é: ${endereco}`);
         chat.appendChild(resultado);
         perguntaPagamento();
+        resetInput();
     }
 }
 
@@ -105,6 +114,7 @@ function listaPagamento(){
         const res = document.createElement('p');
         res.append(`ID: ${pagamento[i].id} Forma: ${pagamento[i].forma}`);
         chat.appendChild(res); 
+        resetInput();
     }
 }
 
@@ -124,6 +134,7 @@ function perguntaPagamento(){
         for (let i = 0; i < pagamento.length; i++){
             if(pag == pagamento[i].id){
                 resultado.append(`Forma de pagamento selecionado: ${pagamento[i].forma}`);
+                resetInput();
             }
         }
     }
