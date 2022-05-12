@@ -186,6 +186,8 @@ function perguntaPagamento(){
 
 function finalizaPedido(){
     const resultado = document.createElement('p');
+    resultado.classList.add('bg-primary')
+    resultado.classList.add('text-white')
     resultado.append(`Pedido: ${cardapio[pedido-1].sabor}, Valor Total: R$${cardapio[pedido - 1].preco}, endereco:${endereco}, Forma de Pagamento:${pagamento[pag-1].forma} Valor:R$${troco} Troco:R$${valor}`)
     chat.appendChild(resultado);
 
