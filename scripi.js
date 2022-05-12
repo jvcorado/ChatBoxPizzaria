@@ -1,6 +1,8 @@
 const input = document.querySelector('#valor');
 const enviar = document.querySelector('#enviar');
 const chat = document.querySelector('.chat');
+const titulo = document.createElement('h1')
+
 let pedido;
 let nome;
 
@@ -18,7 +20,7 @@ const cardapio = [
     {
         id:3,
         sabor:'Portuguesa',
-        preco:50.00
+        preco:50.50
     
     },
     {
@@ -48,19 +50,20 @@ function resetInput(){
 }
 
 function devolveNome(){
+    const entrada = document.createElement('p')
+    entrada.classList.add('espec')
     const res = document.createElement('p');
     nome = input.value;
+    entrada.append(nome)
     res.append(`Seja Bem Vindo ${nome} á JVPIZZAS`);
+    chat.appendChild(entrada);
     chat.appendChild(res);
     listaCardapio();
-     
-
 }
 
 function listaCardapio(){
-    const h1 = document.createElement('h1')
-    h1.append('CARDÁPIO');  
-    chat.appendChild(h1);  
+    titulo.append('CARDÁPIO');  
+    chat.appendChild(titulo);  
     for (let i = 0; i < cardapio.length; i++){
         const res = document.createElement('p');
         res.append(`ID: ${cardapio[i].id} Sabor: ${cardapio[i].sabor} Valor: ${cardapio[i].preco}`);
@@ -72,35 +75,41 @@ function listaCardapio(){
 }
 
 function perguntaPedido(){
-    const pergunta = document.createElement('p');
-    pergunta.append(`${nome} Digite o id do pedido: `);
-    chat.appendChild(pergunta).value;
+    const res = document.createElement('p');
+    const entrada = document.createElement('p')
+    const resultado = document.createElement('p');
+    res.append(`${nome} Digite o id do pedido: `);
+    chat.appendChild(res).value;
     enviar.onclick = function(){
         pedido = input.value;
-        const resultado = document.createElement('p');
-        chat.appendChild(resultado);
         for (let i = 0; i < cardapio.length; i++){
             if(pedido == cardapio[i].id){
-                resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`);
+                entrada.classList.add('espec')
+                entrada.append(pedido)
+                chat.appendChild(entrada)
+                resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`)
+                chat.appendChild(resultado);
                 perguntaEndereco();
                 resetInput();
             }
         }
     }
-    chat.appendChild(btnPedido);
-    return pedido;
 }
 
 function perguntaEndereco(){
     const pergunta = document.createElement('p');
+    const res = document.createElement('p');
+    const entrada = document.createElement('p')
     let endereco;
     pergunta.append(`Qual é o seu endereço:`);
     chat.appendChild(pergunta).value;
     enviar.onclick = function(){
         endereco = input.value;
-        const resultado = document.createElement('p');
-        resultado.append(`Seu endereço é: ${endereco}`);
-        chat.appendChild(resultado);
+        entrada.classList.add("espec")
+        entrada.append(endereco)
+        chat.appendChild(entrada);
+        res.append(`Seu endereço é: ${endereco}`);
+        chat.appendChild(res);
         perguntaPagamento();
         resetInput();
     }
