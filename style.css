@@ -59,11 +59,13 @@ p{
 @media (max-width:500px) {
     .container{
         width: 100vw;
+        height: 100vw;
         margin: 10px;
         justify-content: none;
     }
     .chat{
         width:100vw;
-        background-color: rgb(0, 132, 255);
+        height: 100vw;
+        background-color: rgb(0, 255, 34);
     }
 }
