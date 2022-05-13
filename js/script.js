@@ -89,11 +89,12 @@ function typeWriter(elemento){
         console.log(letra);
         setTimeout( ()=>{
             elemento.innerHTML += letra
-        }, 75 * i)
+        }, 80 * i)
     })
 }
 
 typeWriter(text);
+
 
 
 function resetInput(){
@@ -145,9 +146,6 @@ function perguntaPedido(){
                 resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`)
                 typeWriter(resultado)
                 chat.appendChild(resultado);
-                const perguntaNovoPedido = document.createElement('p');
-                perguntaNovoPedido.append('Deseja efetuar um novo pedido? (S/N)')
-                chat.appendChild(perguntaNovoPedido);
                 perguntaEndereco();
                 resetInput();
             }
@@ -179,7 +177,7 @@ function listaPagamento(){
     chat.appendChild(h1);  
     for (let i = 0; i < pagamento.length; i++){
         const res = document.createElement('p');
-        res.classList.add('primary')
+        res.classList.add('danger')
         res.append(`ID: ${pagamento[i].id} Forma: ${pagamento[i].forma}`);
         chat.appendChild(res); 
         resetInput();
@@ -241,11 +239,12 @@ function perguntaPagamento(){
 function finalizaPedido(){
     const resultado = document.createElement('p');
     const pergunta = document.createElement('p');
-    resultado.classList.add('bg-primary')
-    resultado.classList.add('text-white')
+    resultado.classList.add('bg-warning')
+    resultado.classList.add('text-dark')
     resultado.append(`Pedido: ${cardapio[pedido-1].sabor}, Valor Total: R$${cardapio[pedido - 1].preco}, endereco:${endereco}, Forma de Pagamento:${pagamento[pag-1].forma} Valor:R$${troco} Troco:R$${valor}`)
     chat.appendChild(resultado);
     pergunta.append('Confirmar Pedido: S/N')
+    pergunta.classList.add('danger')
     chat.appendChild(pergunta)
     confirmar = input.value
     enviar.onclick = function(){
