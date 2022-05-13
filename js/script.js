@@ -94,7 +94,7 @@ function typeWriter(elemento){
 }
 
 typeWriter(text);
-typeWriter(texto);
+
 
 function resetInput(){
     input.value = '';
@@ -145,6 +145,9 @@ function perguntaPedido(){
                 resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`)
                 typeWriter(resultado)
                 chat.appendChild(resultado);
+                const perguntaNovoPedido = document.createElement('p');
+                perguntaNovoPedido.append('Deseja efetuar um novo pedido? (S/N)')
+                chat.appendChild(perguntaNovoPedido);
                 perguntaEndereco();
                 resetInput();
             }

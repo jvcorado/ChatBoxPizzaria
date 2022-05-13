@@ -99,4 +99,14 @@ p{
     .botoes{
         width: 390px !important;
     }  
+    h1{
+
+        width:100%;
+
+    }
+    p{
+
+        width: 100%;
+     
+    }
 }
