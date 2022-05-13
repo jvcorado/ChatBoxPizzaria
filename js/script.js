@@ -1,6 +1,8 @@
 const input = document.querySelector('#valor');
 const enviar = document.querySelector('#enviar');
 const chat = document.querySelector('.chat');
+const text = document.querySelector('.text');
+const texto = document.querySelector('.texto');
 const titulo = document.createElement('h1')
 
 let pedido;
@@ -79,6 +81,21 @@ const pagamento = [
     }
 ]
 
+
+function typeWriter(elemento){
+    const textArray = elemento.innerHTML.split('');
+    textArray.forEach((letra, i) => {
+        elemento.innerHTML = '';
+        console.log(letra);
+        setTimeout( ()=>{
+            elemento.innerHTML += letra
+        }, 75 * i)
+    })
+}
+
+typeWriter(text);
+typeWriter(texto);
+
 function resetInput(){
     input.value = '';
 }
@@ -92,12 +109,13 @@ function devolveNome(){
     res.classList.add('success')
     res.append(`Seja Bem Vindo ${nome} á JVPIZZAS`);
     chat.appendChild(entrada);
+    typeWriter(res)
     chat.appendChild(res);
     listaCardapio();
 }
 
 function listaCardapio(){
-    titulo.append('CARDÁPIO');  
+    titulo.append('CARDÁPIO');
     chat.appendChild(titulo);  
     for (let i = 0; i < cardapio.length; i++){
         const res = document.createElement('p');
@@ -115,6 +133,7 @@ function perguntaPedido(){
     const entrada = document.createElement('p')
     const resultado = document.createElement('p');
     res.append(`${nome} Digite o id do pedido: `);
+    typeWriter(res);
     chat.appendChild(res).value;
     enviar.onclick = function(){
         pedido = input.value;
@@ -124,6 +143,7 @@ function perguntaPedido(){
                 entrada.append(pedido)
                 chat.appendChild(entrada)
                 resultado.append(`Seu pedido foi: ${cardapio[i].sabor}`)
+                typeWriter(resultado)
                 chat.appendChild(resultado);
                 perguntaEndereco();
                 resetInput();
@@ -217,10 +237,24 @@ function perguntaPagamento(){
 
 function finalizaPedido(){
     const resultado = document.createElement('p');
+    const pergunta = document.createElement('p');
     resultado.classList.add('bg-primary')
     resultado.classList.add('text-white')
     resultado.append(`Pedido: ${cardapio[pedido-1].sabor}, Valor Total: R$${cardapio[pedido - 1].preco}, endereco:${endereco}, Forma de Pagamento:${pagamento[pag-1].forma} Valor:R$${troco} Troco:R$${valor}`)
     chat.appendChild(resultado);
-
+    pergunta.append('Confirmar Pedido: S/N')
+    chat.appendChild(pergunta)
+    confirmar = input.value
+    enviar.onclick = function(){
+        if(confirmar === 'S' || 's'){
+            const res = document.createElement('p');
+            res.append('Pedido Efetuado com Sucesso');
+            chat.appendChild(res)
+        }
+        else if(confirmar === 'N' || 'n'){
+            alert('Pedido Cancelado')
+            devolveNome();
+        }
+    }
 }
 
