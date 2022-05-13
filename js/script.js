@@ -119,7 +119,7 @@ function listaCardapio(){
     chat.appendChild(titulo);  
     for (let i = 0; i < cardapio.length; i++){
         const res = document.createElement('p');
-        res.classList.add('primary')
+        res.classList.add('danger')
         res.append(`ID: ${cardapio[i].id} Sabor: ${cardapio[i].sabor} Valor: ${cardapio[i].preco}`);
         chat.appendChild(res); 
         resetInput();
