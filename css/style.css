@@ -76,15 +76,16 @@ p{
         margin: 0;
     }
     .espec{
+        width: 70%;
         margin-left: 110px;
     }
     .botoes{
         width: 390px !important;
     }  
     h1{
-        width:100%;
+        width:90%;
     }
     p{
-        width: 70%;
+        width: 90%;
     }
 }
