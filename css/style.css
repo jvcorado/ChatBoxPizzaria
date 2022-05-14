@@ -68,10 +68,6 @@ p{
 }
 
 
-
-
- 
-
 @media (max-width:500px) {
     .chat{
         width:100% !important;
@@ -80,20 +76,15 @@ p{
         margin: 0;
     }
     .espec{
-        margin-left: 0px;
-        background-color: #35c9dc;
+        margin-left: 138px;
     }
     .botoes{
         width: 390px !important;
     }  
     h1{
-
         width:100%;
-
     }
     p{
-
-        width: 100%;
-     
+        width: 70%;
     }
 }
